@@ -1,0 +1,68 @@
+{
+  "name": "regm",
+  "displayName": "regm",
+  "description": "REGM is a regular expression matcher",
+  "publisher": "jaywhen",
+  "icon": "assets/logo.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywhen/vscode-regm"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "regm.config",
+        "category": "RegExp Matcher",
+        "title": "Config the RegExp"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Config",
+      "properties": {
+        "regm.regExpName": {
+          "type": "string",
+          "default": "Chinese",
+          "description": "The reg exp name"
+        },
+        "regm.regExp": {
+          "type": "string",
+          "default": "(.[\u4E00-\u9FA5]+)|([\u4E00-\u9FA5]+.)",
+          "description": "The reg exp"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "install:all": "npm install && cd webview-ui && npm install",
+    "start:webview": "cd webview-ui && npm run start",
+    "build:webview": "cd webview-ui && npm run build",
+    "build:watch": "cd webview-ui && npm run watch:build",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.46.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  }
+}
